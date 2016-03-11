@@ -6,15 +6,15 @@
 
 The easiest way to create a matrix from existing data is to use the static method `createFromArray`:
 ```php
-$matrix = Matrix::createFromArray([['foobar'], ['fruitcake']);
+$matrix = Matrix::createFromArray([['foo', 'bar'], ['fruit', 'cake']);
 ```
 
 or...
 
 ```php
 $matrix = new Matrix();
-$matrix->addRow(Row::createFromArray(['foobar']));
-$matrix->addRow(Row::createFromArray(['fruitcake']));
+$matrix->addRow(Row::createFromArray(['foo', 'bar']));
+$matrix->addRow(Row::createFromArray(['fruit', 'cake']));
 ```
 
 ###### On the fly
@@ -36,9 +36,10 @@ foreach ($yourData as $yourRow) {
 
 All of these approaches will give you a matrix looking like this:
 
-|-----------|
-| foobar    |
-| fruitcake |
+|||
+|-------|------|
+| foo   | bar  |
+| fruit | cake |
 
 
 ### Manipulating matrices
@@ -50,30 +51,33 @@ throughout the entire matrix.
 
 Let's start with a simple example:
 ```php
-$matrix = Matrix::createFromArray([['r1c1', 'r1c2']]);
+$matrix = Matrix::createFromArray([['foo', 'bar']]);
 ```
 
 At this point the matrix would represent something like this:
 
-|------|------|
-| r1c1 | r1c2 |
+|||
+|-------|------|
+| foo   | bar  |
+
 
 Now let's see what happens to a column after we add another row to the matrix:
 ```php
 // let's grab a column
 $column = $matrix->getColumn(0);
-echo count($column->getElements()); // will output '1' (only element is 'r1c1')
+echo count($column->getElements()); // will output '1' (only element is 'foo')
 
 // add another row to the matrix
 $matrix->addRow(new Row([new Element('r2-c1')]));
 
 // having added a new row, any affected column got updated as well:
-echo count($column->getElements()); // will output '2' (for elements 'r1c1' and 'r2c1')
+echo count($column->getElements()); // will output '2' (for elements 'foo' and 'fruit')
 ```
 
 At this point the matrix would represent something like this:
 
-|------|------|
-| r1c1 | r1c2 |
-| r2c1 |      |
+|||
+|-------|------|
+| foo   | bar  |
+| fruit |      |
 
