@@ -68,7 +68,7 @@ $column = $matrix->getColumn(0);
 echo count($column->getElements()); // will output '1' (only element is 'foo')
 
 // add another row to the matrix
-$matrix->addRow(new Row([new Element('r2-c1')]));
+$matrix->addRow(new Row([new Element('fruit')]));
 
 // having added a new row, any affected column got updated as well:
 echo count($column->getElements()); // will output '2' (for elements 'foo' and 'fruit')
