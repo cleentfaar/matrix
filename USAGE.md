@@ -55,7 +55,7 @@ $matrix = Matrix::createFromArray([['r1c1', 'r1c2']]);
 
 At this point the matrix would represent something like this:
 
-|-------------|
+|------|------|
 | r1c1 | r1c2 |
 
 Now let's see what happens to a column after we add another row to the matrix:
@@ -73,7 +73,7 @@ echo count($column->getElements()); // will output '2' (for elements 'r1c1' and 
 
 At this point the matrix would represent something like this:
 
-|-------------|
+|------|------|
 | r1c1 | r1c2 |
 | r2c1 |      |
 

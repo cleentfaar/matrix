@@ -26,7 +26,7 @@ Please see the [USAGE](USAGE.md) documentation to get started with this library.
 ## Renderers and converters for [Matrix](https://github.com/cleentfaar/matrix)
 
 | Package | Description |
-|-----------------------|
+|---------|-------------|
 | [cleentfaar/matrix-renderer-ascii](https://packagist.org/packages/cleentfaar/matrix-converter-ascii) | Converts your matrix into an ASCII string. |
 | [cleentfaar/matrix-converter-csv](https://packagist.org/packages/cleentfaar/matrix-converter-csv) | Converts your matrix into a CSV file. |
 
