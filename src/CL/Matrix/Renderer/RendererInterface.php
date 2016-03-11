@@ -8,7 +8,7 @@ interface RendererInterface
 {
     /**
      * @param Matrix $matrix
-     * @param bool  $withHeaders
+     * @param bool   $withHeaders
      *
      * @return string
      */

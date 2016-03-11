@@ -7,8 +7,9 @@
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-Matrix is a highly extensible library for creating matrices in PHP. 
-Matrices can either be rendered or exported to different formats using [the extensions](#related-packages) made for this library.
+Matrix is a highly extensible library for creating and manipulating matrices in PHP. 
+Matrices can either be rendered or exported to different formats using the relevant interfaces.
+Existing renderers and exporters can be found under [the related packages](#related-packages).
 
 ## Install
 
@@ -20,18 +21,16 @@ $ composer require cleentfaar/matrix
 
 ## Usage
 
-Please see the [USAGE](USAGE.md) guide for getting started with this library.
+Please see the [USAGE](USAGE.md) documentation to get started with this library.
 
-## Available extensions
-
-The following extensions are currently available for this library:
+## Renderers and converters for [Matrix](https://github.com/cleentfaar/matrix)
 
 | Package | Description |
 |-----------------------|
-| [cleentfaar/matrix-converter-ascii](https://packagist.org/packages/cleentfaar/matrix-converter-ascii) | Converts your matrix into an ASCII string. |
+| [cleentfaar/matrix-renderer-ascii](https://packagist.org/packages/cleentfaar/matrix-converter-ascii) | Converts your matrix into an ASCII string. |
 | [cleentfaar/matrix-converter-csv](https://packagist.org/packages/cleentfaar/matrix-converter-csv) | Converts your matrix into a CSV file. |
 
-If you would like to create an extension check out the [contribution](#contributing) guide for guidelines.
+NOTE: If you would like your renderer or exporter to be added to this list you can submit a PR for it.
 
 ## Change log
 
