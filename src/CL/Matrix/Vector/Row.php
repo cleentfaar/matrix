@@ -57,4 +57,20 @@ class Row extends AbstractVector
             }
         }
     }
+
+    /**
+     * @param mixed[] $values
+     *
+     * @return Row
+     */
+    public static function createFromArray(array $values)
+    {
+        $vector = new self;
+
+        foreach ($values as $offset => $value) {
+            $vector->setElement($offset, new Element($value));
+        }
+
+        return $vector;
+    }
 }

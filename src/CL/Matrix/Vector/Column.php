@@ -57,4 +57,20 @@ class Column extends AbstractVector
             }
         }
     }
+
+    /**
+     * @param mixed[] $values
+     *
+     * @return Column
+     */
+    public static function createFromArray(array $values)
+    {
+        $vector = new self;
+
+        foreach ($values as $offset => $value) {
+            $vector->setElement($offset, new Element($value));
+        }
+
+        return $vector;
+    }
 }

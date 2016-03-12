@@ -66,23 +66,4 @@ abstract class AbstractVector implements VectorInterface
     {
         return $this->elements;
     }
-
-    /**
-     * @param array $values
-     *
-     * @return Row|Column
-     */
-    public static function createFromArray(array $values)
-    {
-        $class = static::class;
-
-        /* @var AbstractVector $vector */
-        $vector = new $class();
-
-        foreach ($values as $offset => $value) {
-            $vector->setElement($offset, new Element($value));
-        }
-
-        return $vector;
-    }
 }

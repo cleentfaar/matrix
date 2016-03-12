@@ -35,4 +35,11 @@ interface VectorInterface
      * @return Element[]
      */
     public function getElements();
+
+    /**
+     * @param array $values
+     *
+     * @return Row|Column
+     */
+    public static function createFromArray(array $values);
 }
