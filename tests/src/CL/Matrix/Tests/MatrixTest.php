@@ -63,21 +63,18 @@ class MatrixTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage There is no row in this matrix with that offset: 1235
      */
     public function it_throws_an_exception_when_row_offset_does_not_exist()
     {
         $matrix = new Matrix();
-        $matrix->addRow($row = new Row([]));
+        $matrix->setRow($existingOffset = 1234, $row = new Row([]));
 
-        $offsets = array_keys($matrix->getRows());
-        $existingOffset = end($offsets);
         $nonExistingOffset = $existingOffset + 1;
 
         $this->assertTrue($matrix->hasRow($existingOffset));
         $this->assertFalse($matrix->hasRow($nonExistingOffset));
-
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage('There is no row in this matrix with that offset: 1');
 
         $this->assertSame($row, $matrix->getRow($nonExistingOffset));
     }
@@ -128,22 +125,37 @@ class MatrixTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage There is no column in this matrix with that offset: 1235
      */
     public function it_throws_an_exception_when_column_offset_does_not_exist()
     {
         $matrix = new Matrix();
-        $matrix->addColumn($column = new Column([]));
+        $matrix->setColumn($existingOffset = 1234, $column = new Column([]));
 
-        $offsets = array_keys($matrix->getColumns());
-        $existingOffset = end($offsets);
         $nonExistingOffset = $existingOffset + 1;
 
         $this->assertTrue($matrix->hasColumn($existingOffset));
         $this->assertFalse($matrix->hasColumn($nonExistingOffset));
 
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage('There is no column in this matrix with that offset: 1');
-
         $this->assertSame($column, $matrix->getColumn($nonExistingOffset));
+    }
+
+    /**
+     * @test
+     */
+    public function it_can_be_created_from_an_array()
+    {
+        $data = [
+            'Fruit #1' => ['name' => 'banana', 'color' => 'yellow'],
+            'Fruit #2' => ['name' => 'apple', 'color' => 'red'],
+        ];
+
+        $matrix = Matrix::createFromArray($data);
+
+        $this->assertSame('yellow', $matrix->getRow('Fruit #1')->getElement('color')->getValue());
+        $this->assertSame('apple', $matrix->getRow('Fruit #2')->getElement('name')->getValue());
+        $this->assertSame('banana', $matrix->getColumn('name')->getElement(0)->getValue());
+        $this->assertSame('red', $matrix->getColumn('color')->getElement(1)->getValue());
     }
 }

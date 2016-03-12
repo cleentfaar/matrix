@@ -46,6 +46,8 @@ class Matrix
      */
     public function setRow($offset, Row $row)
     {
+        $row->setMatrix($this, $offset);
+
         $this->rows[$offset] = $row;
     }
 
@@ -103,6 +105,8 @@ class Matrix
      */
     public function setColumn($offset, Column $column)
     {
+        $column->setMatrix($this, $offset);
+
         $this->columns[$offset] = $column;
     }
 
@@ -139,5 +143,21 @@ class Matrix
     public function hasColumn($offset)
     {
         return array_key_exists($offset, $this->columns);
+    }
+
+    /**
+     * @param array $rows
+     *
+     * @return Matrix
+     */
+    public static function createFromArray(array $rows)
+    {
+        $matrix = new Matrix();
+
+        foreach ($rows as $offset => $row) {
+            $matrix->setRow($offset, Row::createFromArray($row));
+        }
+
+        return $matrix;
     }
 }
